@@ -56,6 +56,12 @@ int	check_right(t_vars *vars)
 	return (1);
 }
 
+int	ft_close(t_vars *vars)
+{
+	(void)vars;
+	return (0);
+}
+
 int	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == 65361 && check_left(vars))
@@ -66,8 +72,9 @@ int	key_hook(int keycode, t_vars *vars)
 		vars->pos.y--;
 	if (keycode == 65364 && check_down(vars))
 		vars->pos.y++;
-	// printf("%d\n", keycode);
-	// printf("%d %d\n", vars->player.x, vars->player.y);
+	//if (keycode == 17 || keycode == 65307)
+		//return(ft_close(vars));
+	printf("%d\n", keycode);
 	print_map(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win.addr, vars->player.addr,
 		vars->pos.x * 40, vars->pos.y * 40);

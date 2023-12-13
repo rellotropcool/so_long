@@ -26,10 +26,12 @@ $(NAME):	$(SRC)
 clean:
 		@rm $(NAME)
 		@rm libmlx.a libmlx_Linux.a
+		@make clean -C mlx
 		@echo Cleaned
 			
 fclean:		clean
 			
 re:		fclean all
+
 
 .PHONY:		all clean fclean re

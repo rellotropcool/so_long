@@ -49,7 +49,7 @@ char		*ft_strdup(char *str, int len);
 char		*ft_strjoin(char *s1, char *s2);
 char		*map_init(int fd);
 int			map_is_valid(t_map *map);
-void		vars_gen(t_vars *vars, t_map map);
+int		vars_gen(t_vars *vars, t_map *map);
 void		print_map(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 
