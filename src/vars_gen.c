@@ -20,8 +20,9 @@ int	vars_gen(t_vars *vars, t_map *map)
 			&vars->player.x, &vars->player.y);
 	vars->start.addr = mlx_xpm_file_to_image(vars->mlx, "imgs/start.xpm",
 			&vars->player.x, &vars->player.y);
-	vars->exit.addr = mlx_xpm_file_to_image(vars->mlx, "imgs/exit.xpm",
+	vars->end.addr = mlx_xpm_file_to_image(vars->mlx, "imgs/exit.xpm",
 			&vars->player.x, &vars->player.y);
-	//printf("%s\n", vars->map.map);
-	return (free(map->map), map = NULL, 0);
+	mlx_put_image_to_window(vars->mlx, vars->win.addr, vars->player.addr,
+		vars->pos.x * 40, vars->pos.y * 40);
+	return (0);
 }

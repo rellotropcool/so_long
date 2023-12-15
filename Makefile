@@ -13,6 +13,7 @@ SRC		=	src/test.c \
 			src/key_hook.c \
 			src/print_map.c \
 			src/vars_gen.c \
+			src/map_is_endable.c
 
 all:		$(NAME)
 

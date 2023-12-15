@@ -51,3 +51,28 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	return (array);
 }
+
+int	ft_count(char *str, char c)
+{
+	int i;
+	int cpt;
+
+	i = 0;
+	cpt = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			cpt++;
+		i++;
+	}
+	return (cpt);
+}
+
+int	get_p(char *map)
+{
+	int i;
+	i = 0;
+	while (map[i] && map[i] != 'P')
+		i++;
+	return (i);
+}

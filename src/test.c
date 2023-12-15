@@ -10,10 +10,11 @@ int	main(int argc, char **argv)
 		return (printf("invalid number of maps\n"), -1);
 	fd_map = open(argv[1], O_RDONLY);
 	map.map = map_init(fd_map);
-	if (!map_is_valid(&map))
+	if (!map_is_valid(&map) || !map_is_endable(ft_strdup(map.map), map.start, map.collec))
 		return (0);
 	vars_gen(&vars, &map);
 	print_map(&vars);
 	mlx_key_hook(vars.win.addr, key_hook, &vars);
 	mlx_loop(vars.mlx);
+	return (0);
 }

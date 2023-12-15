@@ -19,7 +19,7 @@ void	print_map(t_vars *vars)
 					vars->coll.addr, i * 40, j * 40);
 			else if (vars->map.map[j * (vars->map.x + 1) + i] == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->win.addr,
-					vars->exit.addr, i * 40, j * 40);
+					vars->end.addr, i * 40, j * 40);
 			else if (vars->map.map[j * (vars->map.x + 1) + i] == 'P')
 				mlx_put_image_to_window(vars->mlx, vars->win.addr,
 					vars->start.addr, i * 40, j * 40);
@@ -29,7 +29,8 @@ void	print_map(t_vars *vars)
 			i++;
 		}
 		j++;
+		mlx_put_image_to_window(vars->mlx, vars->win.addr, vars->player.addr,
+			vars->pos.x * 40, vars->pos.y * 40);
 	}
-	printf("%s\n", vars->map.map);
 	return ;
 }

@@ -20,6 +20,7 @@ typedef struct s_map
 	int		y;
 	char	*map;
 	int		start;
+	int		collec;
 }			t_map;
 
 typedef struct s_sys
@@ -39,7 +40,7 @@ typedef struct s_vars
 	t_sys	empty;
 	t_sys	coll;
 	t_sys	start;
-	t_sys	exit;
+	t_sys	end;
 	t_coo	pos;
 	t_map	map;
 }			t_vars;
@@ -47,8 +48,11 @@ typedef struct s_vars
 int			ft_strlen(char *s);
 char		*ft_strdup(char *str, int len);
 char		*ft_strjoin(char *s1, char *s2);
+int			ft_count(char *str, char c);
+int			get_p(char *map);
 char		*map_init(int fd);
 int			map_is_valid(t_map *map);
+int			map_is_endable(t_map *map);
 int		vars_gen(t_vars *vars, t_map *map);
 void		print_map(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);

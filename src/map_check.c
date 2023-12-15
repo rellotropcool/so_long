@@ -22,34 +22,45 @@ int	check_rectangle(t_map *map)
 	return (1);
 }
 
+int	ft_strlen2(char *s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+		{
+			if (s[i] != '\n')
+				j++;
+			i++;
+		}
+	return (j);
+}
+
 int	check_values(t_map *map)
 {
 	int	i;
+	int	o;
+	int	e;
+	int	p;
+	int c;
 
-	int(c) = 0;
-	int(e) = 0;
-	int(p) = 0;
-	i = 0;
-	while (map->map[i])
-	{
-		if (map->map[i] == '0' || map->map[i] == '1' || map->map[i] == '\n')
-			;
-		else if (map->map[i] == 'C')
-			c = 1;
-		else if (map->map[i] == 'E')
-			e++;
-		else if (map->map[i] == 'P')
-		{
-			map->start = i;
-			p++;
-		}
-		else
-			break ;
-		i++;
-	}
-	if (c && e == 1 && p == 1 && !map->map[i])
-		return (1);
-	return (0);
+	c = ft_count(map->map, 'C');
+	e = ft_count(map->map, 'E');
+	p = ft_count(map->map, 'P');
+	o = ft_count(map->map, '0');
+	i = ft_count(map->map, '1');
+
+	if (c + e + p + i + o != ft_strlen2(map->map))
+		return (0);
+	if (!c || e != 1 || p != 1)
+		return (0);
+	map->start = get_p(map->map);
+	map->collec = c;
+	return (1);
 }
 
 int	check_borders(char *map)

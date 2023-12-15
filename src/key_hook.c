@@ -56,10 +56,9 @@ int	check_right(t_vars *vars)
 	return (1);
 }
 
-int	ft_close(t_vars *vars)
+void	ft_close(t_vars *vars)
 {
-	(void)vars;
-	return (0);
+	mlx_destroy_window(vars->mlx, vars->win.addr);
 }
 
 int	key_hook(int keycode, t_vars *vars)
@@ -72,11 +71,13 @@ int	key_hook(int keycode, t_vars *vars)
 		vars->pos.y--;
 	if (keycode == 65364 && check_down(vars))
 		vars->pos.y++;
-	//if (keycode == 17 || keycode == 65307)
-		//return(ft_close(vars));
+	if (keycode == 65307)
+	{
+		printf("coucou niklabak\n");
+		ft_close(vars);
+		return (printf("niklapolis\n"), -1);
+	}
 	printf("%d\n", keycode);
 	print_map(vars);
-	mlx_put_image_to_window(vars->mlx, vars->win.addr, vars->player.addr,
-		vars->pos.x * 40, vars->pos.y * 40);
 	return (0);
 }
