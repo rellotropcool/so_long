@@ -10,7 +10,7 @@ int	main(int argc, char **argv)
 		return (printf("invalid number of maps\n"), -1);
 	fd_map = open(argv[1], O_RDONLY);
 	map.map = map_init(fd_map);
-	if (!map_is_valid(&map) || !map_is_endable(ft_strdup(map.map), map.start, map.collec))
+	if (!map_is_valid(&map))
 		return (0);
 	vars_gen(&vars, &map);
 	print_map(&vars);

@@ -52,7 +52,7 @@ int			ft_count(char *str, char c);
 int			get_p(char *map);
 char		*map_init(int fd);
 int			map_is_valid(t_map *map);
-int			map_is_endable(t_map *map);
+int map_is_endable(t_map *map, int current, char *tile_checker, int *count);
 int		vars_gen(t_vars *vars, t_map *map);
 void		print_map(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
