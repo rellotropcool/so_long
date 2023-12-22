@@ -2,7 +2,7 @@ NAME		=	so_long
 
 CC		=	cc
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror -g3
 
 MLX_FLAGS	=	-lX11 -lXext
 
@@ -13,7 +13,8 @@ SRC		=	src/test.c \
 			src/key_hook.c \
 			src/print_map.c \
 			src/vars_gen.c \
-			src/map_is_endable.c
+			src/map_is_endable.c \
+			src/map_check_utils.c
 
 all:		$(NAME)
 

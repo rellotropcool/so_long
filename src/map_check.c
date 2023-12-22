@@ -59,6 +59,7 @@ int	check_values(t_map *map)
 	if (!c || e != 1 || p != 1)
 		return (0);
 	map->start = get_p(map->map);
+	map->start_dup = get_p(map->map);
 	map->collec = c;
 	return (1);
 }
@@ -86,13 +87,12 @@ int	check_borders(char *map)
 
 int	map_is_valid(t_map *map)
 {
-	int	i;
-	int	count[2];
-	static char str[4096];
+	int	count[3];
+	char str[4096];
 
 	count[0] = 0;
 	count[1] = 0;
-	(void)count;
+	count[2] = RIGHT;
 	if (!map->map)
 		return (0);
 	if (!check_rectangle(map))
@@ -101,11 +101,8 @@ int	map_is_valid(t_map *map)
 		return (printf("values error\n"), 0);
 	if (!check_borders(map->map))
 		return (printf("borders error\n"), 0);
-	i = 0;
-	while (i < map->x * map->y)
-		str[i++] = '0';
-	printf("str : %s\n", str);
-	if(!map_is_endable(map, map->start, str, count))
+	fill_checker(str, map);
+	if(!map_is_endable(map, &map->start_dup, str, count))
 		return (printf("map impossible\n"), 1);
 	return (printf("map valid\n"), 1);
 }

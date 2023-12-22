@@ -8,6 +8,19 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+#ifndef UP
+# define UP 1
+#endif
+#ifndef DOWN
+# define DOWN 3
+#endif
+#ifndef LEFT
+# define LEFT 2
+#endif
+#ifndef RIGHT
+# define RIGHT 0
+#endif
+
 typedef struct s_coo
 {
 	int		x;
@@ -20,6 +33,7 @@ typedef struct s_map
 	int		y;
 	char	*map;
 	int		start;
+	int		start_dup;
 	int		collec;
 }			t_map;
 
@@ -52,7 +66,12 @@ int			ft_count(char *str, char c);
 int			get_p(char *map);
 char		*map_init(int fd);
 int			map_is_valid(t_map *map);
-int map_is_endable(t_map *map, int current, char *tile_checker, int *count);
+void fill_checker(char *str, t_map *map);
+int check_around(t_map *map, int *current, int *count);
+int big_check_around(t_map *map, int *current);
+void check_around_bis(t_map *map, int *current, int *count, char *tile_checker);
+int next_tile(int *current, int direction, t_map *map);
+int map_is_endable(t_map *map, int *current, char *tile_checker, int *count);
 int		vars_gen(t_vars *vars, t_map *map);
 void		print_map(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);

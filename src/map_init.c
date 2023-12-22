@@ -20,3 +20,4 @@ char	*map_init(int fd)
 	}
 	return (map);
 }
+
