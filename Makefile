@@ -14,7 +14,8 @@ SRC		=	src/test.c \
 			src/print_map.c \
 			src/vars_gen.c \
 			src/map_is_endable.c \
-			src/map_check_utils.c
+			src/map_check_utils.c \
+			src/gamerules.c
 
 all:		$(NAME)
 

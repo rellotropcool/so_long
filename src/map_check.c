@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aule-bre <rellotropcool@gmail.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/29 15:22:07 by aule-bre          #+#    #+#             */
+/*   Updated: 2023/12/29 15:22:09 by aule-bre         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	check_rectangle(t_map *map)
@@ -32,11 +44,11 @@ int	ft_strlen2(char *s)
 	if (!s)
 		return (0);
 	while (s[i])
-		{
-			if (s[i] != '\n')
-				j++;
-			i++;
-		}
+	{
+		if (s[i] != '\n')
+			j++;
+		i++;
+	}
 	return (j);
 }
 
@@ -46,14 +58,13 @@ int	check_values(t_map *map)
 	int	o;
 	int	e;
 	int	p;
-	int c;
+	int	c;
 
 	c = ft_count(map->map, 'C');
 	e = ft_count(map->map, 'E');
 	p = ft_count(map->map, 'P');
 	o = ft_count(map->map, '0');
 	i = ft_count(map->map, '1');
-
 	if (c + e + p + i + o != ft_strlen2(map->map))
 		return (0);
 	if (!c || e != 1 || p != 1)
@@ -87,22 +98,19 @@ int	check_borders(char *map)
 
 int	map_is_valid(t_map *map)
 {
-	int	count[3];
-	char str[4096];
+	char	str[4096];
 
-	count[0] = 0;
-	count[1] = 0;
-	count[2] = RIGHT;
+	map->previous = map->start;
 	if (!map->map)
-		return (0);
+		return (write(1, "no map loser\n", 13), 0);
 	if (!check_rectangle(map))
-		return (printf("rectangle error\n"), 0);
+		return (write(1, "rectangle error\n", 16), 0);
 	if (!check_values(map))
-		return (printf("values error\n"), 0);
+		return (write(1, "values error\n", 13), 0);
 	if (!check_borders(map->map))
-		return (printf("borders error\n"), 0);
+		return (write(1, "borders error\n", 14), 0);
 	fill_checker(str, map);
-	if(!map_is_endable(map, &map->start_dup, str, count))
-		return (printf("map impossible\n"), 1);
-	return (printf("map valid\n"), 1);
+	if (!map_is_endable(map, &map->start_dup, str))
+		return (write(1, "map impossible\n", 15), 0);
+	return (write(1, "map valid\n", 10), 1);
 }

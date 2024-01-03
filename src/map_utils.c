@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aule-bre <rellotropcool@gmail.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/29 15:22:53 by aule-bre          #+#    #+#             */
+/*   Updated: 2023/12/29 15:22:54 by aule-bre         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	ft_strlen(char *s)
@@ -54,8 +66,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 int	ft_count(char *str, char c)
 {
-	int i;
-	int cpt;
+	int	i;
+	int	cpt;
 
 	i = 0;
 	cpt = 0;
@@ -70,7 +82,8 @@ int	ft_count(char *str, char c)
 
 int	get_p(char *map)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (map[i] && map[i] != 'P')
 		i++;
