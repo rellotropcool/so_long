@@ -87,6 +87,6 @@ void		print_map(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 void		ft_putnbr(int nb);
 void		gamerules(t_vars *vars);
-void		ft_close(t_vars *vars);
+int		ft_close(t_vars *vars);
 
 #endif

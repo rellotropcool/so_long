@@ -25,12 +25,12 @@ void	gamerules(t_vars *vars)
 	{
 		write(1, "C4EST GAGNER EN \n", 16);
 		ft_putnbr(vars->c);
-		write (1, " COUPS", 6);
+		write (1, " COUPS\n", 7);
 		ft_close(vars);
 	}
 }
 
-void	ft_close(t_vars *vars)
+int	ft_close(t_vars *vars)
 {
 	if (vars->map.map != NULL)
 	{
@@ -45,5 +45,5 @@ void	ft_close(t_vars *vars)
 	}
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
-	exit(0);
+	return(exit(0), 0);
 }

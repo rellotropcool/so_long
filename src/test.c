@@ -6,7 +6,7 @@
 /*   By: aule-bre <rellotropcool@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 15:23:16 by aule-bre          #+#    #+#             */
-/*   Updated: 2023/12/29 15:23:18 by aule-bre         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:54:24 by aule-bre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	vars_gen(&vars, &map);
 	vars.c = 0;
 	print_map(&vars);
+	mlx_hook(vars.win.addr, 17, 0, ft_close, &vars);
 	mlx_key_hook(vars.win.addr, key_hook, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
